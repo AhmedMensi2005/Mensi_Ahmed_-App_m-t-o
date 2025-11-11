@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root{
+    /* Backgrounds */
+    --color-bg-main: #10151f;       /* dark navy background */
+    --color-bg-card: #000000c1; /* semi-transparent card */
+    --color-bg-highlight: #34333c; /* slightly lighter overlay */
+    --color-bg-transparent: #34333ce6;
+
+
+    /* Text */
+    --color-text-primary: #ffffff;  /* main white text */
+    --color-text-secondary: #cbd5e1; /* muted gray text */
+    --color-text-accent: #38bdf8;   /* light cyan accent for temperature, etc. */
+}
+
+*{
+    font-family: "nunito";
+    text-align: center;
+    margin: 0;
+}
+header{
+    top: 0;
+    left: 0;
+    text-align: center;
+    position: sticky;
+}
+
+/*main card split*/
+main {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+}
+    
+.mainCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 6 / span 6;
+}
+
+.hourCard {
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+}
+
+.dayCard {
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 3;
+}
+
+.uvCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+
+.windCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 5;
+    grid-row-start: 5;
+}
+/*-----------------------------*/
+
+
+
+
+
+/*mainCard card split*/
+
+.mainCard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 8px;
+}
+    
+.tempCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-row-start: 4;
+}
+
+.precipCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+.visibCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 6;
+}
+
+.humidCard {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 6;
+}
+.cityInput {
+    grid-column: span 4 / span 4;
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.icon{
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+
+/*-----------------------------------------*/
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #EEEEEE;
+    gap: 2em;
+    background-image: url(image/background/rainy.jpg) ;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+
+.windCard,.uvCard,.hourCard,.dayCard{
+    background-color: var(--color-bg-card);
+    border-radius: 20px;
+    color: var(--color-text-primary);
+    padding: 5%;
+    margin: 5%;
+}
+
+.cityInput,.tempCard,.precipCard,.humidCard,.visibCard{
+    background-color: var(--color-bg-transparent);
+    border-radius: 20px;
+    color: var(--color-text-primary);
+    padding: 5%;
+    margin: 5%;
+    
+    
+}
+
+
+
+.mainCard{
+    background-color: #1419286a;
+    border-radius: 20px;
+    padding: 5%;
+    margin: 5%;
+    background-image: url(image/background/rainy.jpg) ;
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    
+    
+}
+
+main{
+    margin: 3%;
+    padding: 2%;
+    background-color: var(--color-bg-main);
+    border-radius: 20px;
+    background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(image/background/rainy.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+}
+
+.cityInput{
+    height: 1.8em;
+    padding: 2% ;
+    border-radius: 30px;
+    background-color: var(--color-bg-highlight);
+    
+}
+#cityInput{
+    border-radius: 20px;
+    background-color: var(--color-bg-highlight);
+    border: var(--color-bg-main);
+}
+#searchBtn{
+    border-radius: 50%;
+    background-color: var(--color-bg-highlight);
+    border: var(--color-bg-main);
+    
+}
+
+.infoTitle{
+    color: var(--color-text-secondary);
+    font-size: 90%;
+}
+.infoTitle img{
+    width: 0.9em;
+    /*j'ai utiliser cette combinaison pour changer la couleur des icon*/
+    filter: invert(87%) sepia(11%) saturate(239%) hue-rotate(184deg) brightness(94%) contrast(91%);;
+
+}
+
+.icon img{
+    width: 50%;
+}
