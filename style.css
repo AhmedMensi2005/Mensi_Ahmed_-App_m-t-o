@@ -219,3 +219,27 @@ main{
     width: 30%;
     
 }
+.windinner{
+    padding: 10% 5% ;
+    font-size: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+.windinfo{
+    width: 50%;
+}
+
+.compass img{
+    width: 200%;
+    height: 200%;
+    /*j'ai utiliser cette combinaison pour changer la couleur des icon*/
+    filter: invert(87%) sepia(11%) saturate(239%) hue-rotate(184deg) brightness(94%) contrast(91%);;
+
+}
+.uvinfo{
+    padding: 10% 5%;
+    font-size: 80%;
+}
+
