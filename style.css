@@ -5,7 +5,7 @@
     --color-bg-main: #10151f;       /* dark navy background */
     --color-bg-card: #000000c1; /* semi-transparent card */
     --color-bg-highlight: #34333c; /* slightly lighter overlay */
-    --color-bg-transparent: #34333ce6;
+    --color-bg-transparent: #34333c87;
 
 
     /* Text */
@@ -170,6 +170,7 @@ body{
 }
 
 main{
+
     margin: 3%;
     padding: 2%;
     background-color: var(--color-bg-main);
@@ -203,7 +204,7 @@ main{
 
 .infoTitle{
     color: var(--color-text-secondary);
-    font-size: 90%;
+    font-size: 80%;
 }
 .infoTitle img{
     width: 0.9em;
@@ -211,7 +212,10 @@ main{
     filter: invert(87%) sepia(11%) saturate(239%) hue-rotate(184deg) brightness(94%) contrast(91%);;
 
 }
-
+.icon{
+    padding: 0;
+}
 .icon img{
-    width: 50%;
+    width: 30%;
+    
 }

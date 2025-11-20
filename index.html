@@ -19,39 +19,45 @@
                 <option value="Ben Arous"></option>
                 <option value="Nebul"></option>
                 <option value="Beja"></option>
+                <option value="Kairouan"></option>
                 </datalist>
-                <button id="searchBtn"><img src="image/icon/search.svg" alt="research icon"></button>
+                <button onclick="search()" id="searchBtn"><img src="image/icon/search.svg" alt="research icon"></button>
             </div>
-            <div class="icon">
-                <img src="image/icon/weather-svgrepo-com.svg" alt="wheather icon">
+            <div class="icon" >
+                <img id="icon" src="image/icon/weather-svgrepo-com.svg" alt="wheather icon">
+                <div>
+                <h1 id="jour">jour</h1>
+                <h2 id="date">date</h1>
+                </div>
             </div>
+            
             <div class="tempCard">
                 <div class="infoTitle">   
                     <img src="image/icon/thermometer.svg" alt="">
                     <span>TEMPERATURE</span>
                 </div> 
-                <h1>30°</h1>
+                <h1 id="TEMPERATURE">30°</h1>
             </div>
             <div class="precipCard">
                 <div class="infoTitle">   
                     <img src="image/icon/droplet.svg" alt="">
                     <span>PRECIPITATION</span>
                 </div> 
-                <h1>2.3''</h1>
+                <h1 id="PRECIPITATION">2.3''</h1>
             </div>
             <div class="humidCard">
                 <div class="infoTitle">   
                     <img src="image/icon/humidity.svg" alt="">
                     <span>HUMIDITY</span>
                 </div> 
-                <h1>38%</h1>
+                <h1 id="HUMIDITY">38%</h1>
             </div>
             <div class="visibCard">
                 <div class="infoTitle">   
                     <img src="image/icon/eye.svg" alt="">
                     <span>VISIBILITY</span>
                 </div> 
-                <h1>6Mi</h1>
+                <h1 id="VISIBILITY">6Mi</h1>
             </div>
         </div>
         <div class="hourCard">
@@ -67,6 +73,8 @@
                     <span>DAY FORECAST</span>
             </div>
             <hr> 
+            <div>               
+            </div>
         </div>
         <div class="uvCard">
             <div class="infoTitle">   
