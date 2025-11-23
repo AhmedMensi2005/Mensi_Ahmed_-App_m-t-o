@@ -1,4 +1,16 @@
 function pushdata(data){
+    /*initialisation des url pour une fond dynamique*/
+    rainy="image/background/rainy.jpg"
+    sunny="image/background/sunny.jpg";
+    cloudy="image/background/cloudy.jpg";
+    fog="image/background/fog.jpg";
+    drizzle="image/background/drizzle.jpg";
+    ice="image/background/sleet.jpg";
+    snowy="image/background/snowy.jpg";
+    thunder="image/background/thunder.jpg";
+    /*----------------------*/
+
+    /*dictionaire plein de suggestion pour des valeur precis d'indexe d'UV*/ 
     const uvSuggestions = {
         0: "Minimal risk. No protection needed.",
         1: "Minimal risk. Sunglasses are enough.",
@@ -14,25 +26,101 @@ function pushdata(data){
         11: "Extreme risk. Stay indoors during peak hours!",
         12: "Extreme risk. UV extremely dangerous, avoid exposure."
     };
+    /*-------------------------*/
+
+    /*dictionnaire pour attribuer a chaque valeur de data.current.condition.text 
+    une url pour faire une fond dynamique, source: api documentation*/
+    const weatherConditions = {
+        // Clear / Sunny
+        "Sunny": [sunny],
+        "Clear": [sunny],
+
+        // Cloudy
+        "Partly cloudy": [cloudy],
+        "Cloudy": [cloudy],
+        "Overcast": [cloudy],
+
+        // Mist / Fog
+        "Mist": [fog],
+        "Fog": [fog],
+        "Freezing fog": [fog],
+
+        // Drizzle
+        "Patchy light drizzle": [drizzle],
+        "Light drizzle": [drizzle],
+        "Freezing drizzle": [drizzle],
+        "Heavy freezing drizzle": [drizzle],
+        "Patchy freezing drizzle possible": [drizzle],
+
+        // Rain
+        "Patchy rain possible": [rainy],
+        "Patchy light rain": [rainy],
+        "Light rain": [rainy],
+        "Moderate rain at times": [rainy],
+        "Moderate rain": [rainy],
+        "Heavy rain at times": [rainy],
+        "Heavy rain": [rainy],
+        "Light rain shower": [rainy],
+        "Moderate or heavy rain shower": [rainy],
+        "Torrential rain shower": [rainy],
+
+        // Sleet / Ice
+        "Patchy sleet possible": [ice],
+        "Light sleet": [ice],
+        "Moderate or heavy sleet": [ice],
+        "Light sleet showers": [ice],
+        "Moderate or heavy sleet showers": [ice],
+        "Ice pellets": [ice],
+        "Light showers of ice pellets": [ice],
+        "Moderate or heavy showers of ice pellets": [ice],
+
+        // Snow
+        "Patchy snow possible": [snowy],
+        "Patchy light snow": [snowy],
+        "Light snow": [snowy],
+        "Patchy moderate snow": [snowy],
+        "Moderate snow": [snowy],
+        "Patchy heavy snow": [snowy],
+        "Heavy snow": [snowy],
+        "Light snow showers": [snowy],
+        "Moderate or heavy snow showers": [snowy],
+        "Blowing snow": [snowy],
+        "Blizzard": [snowy],
+
+        // Thunderstorms
+        "Thundery outbreaks possible": [thunder],
+        "Patchy light rain with thunder": [thunder],
+        "Moderate or heavy rain with thunder": [thunder],
+        "Patchy light snow with thunder": [thunder],
+        "Moderate or heavy snow with thunder": [thunder]
+    };
+    /*-------------------------*/
+
     console.log(data);
     let icon = document.getElementById("icon");
     console.log(icon.src)
     const date = new Date();
     console.log(date);
     icon.src = data.current.condition.icon;
+    
     document.getElementById("TEMPERATURE").innerText=data.current.heatindex_c+"°C";
     document.getElementById("PRECIPITATION").innerText=data.current.precip_mm+"mm";
     document.getElementById("HUMIDITY").innerText=data.current.humidity+"%";
-    document.getElementById("VISIBILITY").innerText=data.current.vis_km+"km";
+    document.getElementById("VISIBILITY").innerText=data.current.vis_km+"km"; 
     document.getElementById("weatherStatus").innerText=data.current.condition.text;
     document.getElementById("jour").innerText=date.toLocaleDateString("en-US", { weekday: "long" });
-    document.getElementById("date").innerText=date.getFullYear()+"/"+(date.getMonth() + 1)+"/"+date.getDate()
-    document.getElementById("windspeed").innertext=data.current.wind_kph+"kmh"
-    document.getElementById("winddirection").innerText="direction: "+data.current.wind_dir
-    document.getElementById("uvvalue").innerText=data.current.uv
-    document.getElementById("uvsuggestion").innerText=uvSuggestions[data.current.uv]
-
-    
+    document.getElementById("date").innerText=date.getFullYear()+"/"+(date.getMonth() + 1)+"/"+date.getDate();
+    document.getElementById("windspeed").innertext=data.current.wind_kph;
+    document.getElementById("winddirection").innerText="direction: "+data.current.wind_dir;
+    document.getElementById("uvvalue").innerText=data.current.uv;
+    document.getElementById("uvsuggestion").innerText=uvSuggestions[Math.round(data.current.uv)];
+    document.getElementById("cityname").innerText=data.location;
+    console.log(weatherConditions[data.current.condition.text]);
+    document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text]})`;
+    document.querySelector('main').style.backgroundImage=`
+    elinear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(${weatherConditions[data.current.condition.text]})`;
+    document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text]})`
 }
 
 
@@ -48,3 +136,12 @@ function search(){
         .catch(error(err));
     
 }
+
+
+
+
+/*pour mettre par defaut la meteo de tunis*/ 
+fetch(`http://api.weatherapi.com/v1/forecast.json?key=308f10c1c8044db88ad213913251511&q=36.8065,10.1815&days=7&aqi=yes&alerts=no`)
+    .then(response => response.json())
+    .then(data => pushdata(data))
+    .catch(error(err));

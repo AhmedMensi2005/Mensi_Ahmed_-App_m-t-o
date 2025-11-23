@@ -8,8 +8,9 @@
     <script src="script.js"  ></script>
 </head>
 <body>
+    <h1 id="cityname"></h1>
     <main>
-        <div class="mainCard">
+        <div class="mainCard" id="mainCard">
             <div class="cityInput">
                 <input list="cityList" id="cityInput" placeholder="Choisir une ville" />
                 <datalist id="cityList">
@@ -23,7 +24,7 @@
                 </datalist>
                 <button onclick="search()" id="searchBtn"><img src="image/icon/search.svg" alt="research icon"></button>
             </div>
-            <div class="icon" >
+            <div class="icon" >   
                 <img id="icon" src="image/icon/weather-svgrepo-com.svg" alt="wheather icon">
                 <div>
                 <h2 id="weatherStatus">weather</h1>

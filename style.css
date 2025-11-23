@@ -9,7 +9,7 @@
 
 
     /* Text */
-    --color-text-primary: #ffffff;  /* main white text */
+    --color-text-primary: #E9F0F7;  /* main white text */
     --color-text-secondary: #cbd5e1; /* muted gray text */
     --color-text-accent: #38bdf8;   /* light cyan accent for temperature, etc. */
 }
@@ -76,7 +76,7 @@ main {
 .mainCard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     gap: 8px;
 }
     
@@ -241,5 +241,21 @@ main{
 .uvinfo{
     padding: 10% 5%;
     font-size: 80%;
+    color: var(--color-text-primary);
 }
 
+
+
+
+#icon {
+    width: 100px;  
+    height: 100px;      
+    object-fit: contain;   
+    
+}
+
+#VISIBILITY,#HUMIDITY,#PRECIPITATION,#TEMPERATURE{
+    font-size: 1.5em;
+    padding:30% 0;
+    color: var(--color-text-primary);
+}
