@@ -183,7 +183,7 @@ function search(){
 
 
 /*pour mettre par defaut la meteo de tunis*/ 
-fetch(`http://api.weatherapi.com/v1/forecast.json?key=308f10c1c8044db88ad213913251511&q=36.8065,10.1815&days=7&aqi=yes&alerts=no`)
+fetch(`https://api.weatherapi.com/v1/forecast.json?key=308f10c1c8044db88ad213913251511&q=36.8065,10.1815&days=7&aqi=yes&alerts=no`)
     .then(response => response.json())
     .then(data => pushdata(data))
     .catch(error(err));
