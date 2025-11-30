@@ -114,7 +114,7 @@ function pushdata(data){
     document.getElementById("winddirection").innerText="direction: "+data.current.wind_dir;
     document.getElementById("uvvalue").innerText=data.current.uv;
     document.getElementById("uvsuggestion").innerText=uvSuggestions[Math.round(data.current.uv)];
-    document.getElementById("cityname").innerText=data.location;
+    document.getElementById("cityname").innerText=data.location.country+","+data.location.name;
 
     //icon et fond dynamique
     document.getElementById("icon").src = weatherConditions[data.current.condition.text][1];
