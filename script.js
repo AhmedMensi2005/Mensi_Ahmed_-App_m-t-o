@@ -1,13 +1,13 @@
 function pushdata(data){
     /*initialisation des url pour une fond dynamique*/
-    rainy="image/background/rainy.jpg"
-    sunny="image/background/sunny.jpg";
-    cloudy="image/background/cloudy.jpg";
-    fog="image/background/fog.jpg";
-    drizzle="image/background/drizzle.jpg";
-    ice="image/background/sleet.jpg";
-    snowy="image/background/snowy.jpg";
-    thunder="image/background/thunder.jpg";
+    rainy=["image/background/rainy.jpg","image/icon/rainy.svg"];
+    sunny=["image/background/sunny.jpg","image/icon/clear-sunny.svg","image/background/clear-night.jpeg","image/icon/clear-night.svg"];
+    cloudy=["image/background/cloudy.jpg","image/icon/cloudy-sunny.svg","image/background/cloudy-night.jpg","image/icon/cloudy-night.svg"];
+    fog=["image/background/fog.jpg","image/icon/mist.svg"];
+    drizzle=["image/background/drizzle.jpg","image/icon/drizzle.svg"];
+    ice=["image/background/sleet.jpg","image/icon/ice.svg"];
+    snowy=["image/background/snowy.jpg","image/icon/snowy.svg"];
+    thunder=["image/background/thunder.jpg","image/icon/thunder.svg"];
     /*----------------------*/
 
     /*dictionaire plein de suggestion pour des valeur precis d'indexe d'UV*/ 
@@ -32,95 +32,137 @@ function pushdata(data){
     une url pour faire une fond dynamique, source: api documentation*/
     const weatherConditions = {
         // Clear / Sunny
-        "Sunny": [sunny],
-        "Clear": [sunny],
+        "Sunny": sunny,
+        "Clear": sunny,
 
         // Cloudy
-        "Partly cloudy": [cloudy],
-        "Cloudy": [cloudy],
-        "Overcast": [cloudy],
+        "Partly cloudy": cloudy,
+        "Cloudy": cloudy,
+        "Overcast": cloudy,
 
         // Mist / Fog
-        "Mist": [fog],
-        "Fog": [fog],
-        "Freezing fog": [fog],
+        "Mist": fog,
+        "Fog": fog,
+        "Freezing fog": fog,
 
         // Drizzle
-        "Patchy light drizzle": [drizzle],
-        "Light drizzle": [drizzle],
-        "Freezing drizzle": [drizzle],
-        "Heavy freezing drizzle": [drizzle],
-        "Patchy freezing drizzle possible": [drizzle],
+        "Patchy light drizzle": drizzle,
+        "Light drizzle": drizzle,
+        "Freezing drizzle": drizzle,
+        "Heavy freezing drizzle": drizzle,
+        "Patchy freezing drizzle possible": drizzle,
 
         // Rain
-        "Patchy rain possible": [rainy],
-        "Patchy light rain": [rainy],
-        "Light rain": [rainy],
-        "Moderate rain at times": [rainy],
-        "Moderate rain": [rainy],
-        "Heavy rain at times": [rainy],
-        "Heavy rain": [rainy],
-        "Light rain shower": [rainy],
-        "Moderate or heavy rain shower": [rainy],
-        "Torrential rain shower": [rainy],
+        "Patchy rain possible": rainy,
+        "Patchy light rain": rainy,
+        "Light rain": rainy,
+        "Moderate rain at times": rainy,
+        "Moderate rain": rainy,
+        "Heavy rain at times": rainy,
+        "Heavy rain": rainy,
+        "Light rain shower": rainy,
+        "Moderate or heavy rain shower": rainy,
+        "Torrential rain shower": rainy,
 
         // Sleet / Ice
-        "Patchy sleet possible": [ice],
-        "Light sleet": [ice],
-        "Moderate or heavy sleet": [ice],
-        "Light sleet showers": [ice],
-        "Moderate or heavy sleet showers": [ice],
-        "Ice pellets": [ice],
-        "Light showers of ice pellets": [ice],
-        "Moderate or heavy showers of ice pellets": [ice],
+        "Patchy sleet possible": ice,
+        "Light sleet": ice,
+        "Moderate or heavy sleet": ice,
+        "Light sleet showers": ice,
+        "Moderate or heavy sleet showers": ice,
+        "Ice pellets": ice,
+        "Light showers of ice pellets": ice,
+        "Moderate or heavy showers of ice pellets": ice,
 
         // Snow
-        "Patchy snow possible": [snowy],
-        "Patchy light snow": [snowy],
-        "Light snow": [snowy],
-        "Patchy moderate snow": [snowy],
-        "Moderate snow": [snowy],
-        "Patchy heavy snow": [snowy],
-        "Heavy snow": [snowy],
-        "Light snow showers": [snowy],
-        "Moderate or heavy snow showers": [snowy],
-        "Blowing snow": [snowy],
-        "Blizzard": [snowy],
+        "Patchy snow possible": snowy,
+        "Patchy light snow": snowy,
+        "Light snow": snowy,
+        "Patchy moderate snow": snowy,
+        "Moderate snow": snowy,
+        "Patchy heavy snow": snowy,
+        "Heavy snow": snowy,
+        "Light snow showers": snowy,
+        "Moderate or heavy snow showers": snowy,
+        "Blowing snow": snowy,
+        "Blizzard": snowy,
 
         // Thunderstorms
-        "Thundery outbreaks possible": [thunder],
-        "Patchy light rain with thunder": [thunder],
-        "Moderate or heavy rain with thunder": [thunder],
-        "Patchy light snow with thunder": [thunder],
-        "Moderate or heavy snow with thunder": [thunder]
+        "Thundery outbreaks possible": thunder,
+        "Patchy light rain with thunder": thunder,
+        "Moderate or heavy rain with thunder": thunder,
+        "Patchy light snow with thunder": thunder,
+        "Moderate or heavy snow with thunder": thunder
     };
     /*-------------------------*/
 
     console.log(data);
-    let icon = document.getElementById("icon");
-    console.log(icon.src)
     const date = new Date();
     console.log(date);
-    icon.src = data.current.condition.icon;
-    
+    console.log(weatherConditions[data.current.condition.text])
+
     document.getElementById("TEMPERATURE").innerText=data.current.heatindex_c+"°C";
     document.getElementById("PRECIPITATION").innerText=data.current.precip_mm+"mm";
     document.getElementById("HUMIDITY").innerText=data.current.humidity+"%";
     document.getElementById("VISIBILITY").innerText=data.current.vis_km+"km"; 
     document.getElementById("weatherStatus").innerText=data.current.condition.text;
     document.getElementById("jour").innerText=date.toLocaleDateString("en-US", { weekday: "long" });
+
     document.getElementById("date").innerText=date.getFullYear()+"/"+(date.getMonth() + 1)+"/"+date.getDate();
-    document.getElementById("windspeed").innertext=data.current.wind_kph;
+
+    document.getElementById("windspeed").innerText = data.current.wind_kph;
     document.getElementById("winddirection").innerText="direction: "+data.current.wind_dir;
     document.getElementById("uvvalue").innerText=data.current.uv;
     document.getElementById("uvsuggestion").innerText=uvSuggestions[Math.round(data.current.uv)];
     document.getElementById("cityname").innerText=data.location;
-    console.log(weatherConditions[data.current.condition.text]);
-    document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text]})`;
-    document.querySelector('main').style.backgroundImage=`
-    elinear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(${weatherConditions[data.current.condition.text]})`;
-    document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text]})`
+
+    //icon et fond dynamique
+    document.getElementById("icon").src = weatherConditions[data.current.condition.text][1];
+    document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
+    document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][0]})`;
+    document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
+    weatherCondList=["Sunny","Clear","Partly cloudy","Cloudy","Overcast"]
+
+
+
+
+
+
+//echec pour mettre une icone interactive avec le temps
+
+    /*     if(weatherCondList.include(data.current.condition.text)){
+        const currentTimeStr = data.location.localtime;           // "2025-11-28 14:23"
+        const sunriseStr = data.forecast.forecastday[0].astro.sunrise; // "07:42 AM"
+        const sunsetStr = data.forecast.forecastday[0].astro.sunset;   // "05:12 PM"
+        console.log(sunrisestr)
+        
+        const currentDate = new Date(currentTimeStr.replace(" ","T"));
+        console.log(currentDate)
+        const dateOnly = currentTimeStr.split(" ")[0]; // "2025-11-28"
+        const sunriseDate = new Date(`${dateOnly}T${sunriseStr}`);
+        const sunsetDate = new Date(`${dateOnly}T${sunsetStr}`);
+        if(currentDate > sunriseDate && currentDate < sunsetDate){
+            //day
+            document.getElementById("icon").src = weatherConditions[data.current.condition.text][1];
+            document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
+            document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][0]})`;
+            document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
+        }
+        else{
+            //night
+            document.getElementById("icon").src = weatherConditions[data.current.condition.text][3];
+            document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][2]})`;
+            document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][2]})`;
+            document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][2]})`
+        }
+    }
+    else{
+        document.getElementById("icon").src = weatherConditions[data.current.condition.text][1];
+        document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
+        document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][0]})`;
+        document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
+    } */
+
 }
 
 

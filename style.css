@@ -188,18 +188,29 @@ main{
     padding: 2% ;
     border-radius: 30px;
     background-color: var(--color-bg-highlight);
+    display: flex;
+    gap: 1em;
     
 }
 #cityInput{
     border-radius: 20px;
     background-color: var(--color-bg-highlight);
     border: var(--color-bg-main);
+    padding: 2% 0;
+    color: var(--color-text-primary);
 }
 #searchBtn{
     border-radius: 50%;
     background-color: var(--color-bg-highlight);
     border: var(--color-bg-main);
+    cursor: pointer;
+    padding: 0;
     
+}
+
+#searchBtn img{
+    width: 150%;
+
 }
 
 .infoTitle{
@@ -216,12 +227,12 @@ main{
     padding: 0;
 }
 .icon img{
-    width: 30%;
+    width: 100%;
     
 }
 .windinner{
     padding: 10% 5% ;
-    font-size: 60%;
+    font-size: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,8 +259,8 @@ main{
 
 
 #icon {
-    width: 100px;  
-    height: 100px;      
+    width: 200px;  
+    height: 130px;      
     object-fit: contain;   
     
 }
