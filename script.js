@@ -172,7 +172,7 @@ function pushdata(data){
 function search(){
     let ville=document.getElementById('cityInput');
     console.log(ville.value);
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=308f10c1c8044db88ad213913251511&q=${ville.value}&days=7&aqi=yes&alerts=no`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=308f10c1c8044db88ad213913251511&q=${ville.value}&days=7&aqi=yes&alerts=no`)
         .then(response => response.json())
         .then(data => pushdata(data))
         .catch(error(err));
