@@ -270,3 +270,75 @@ main{
     padding:30% 0;
     color: var(--color-text-primary);
 }
+
+
+@media (max-width: 768px) {
+
+    body {
+        gap: 1em;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 4%;
+    }
+
+    .mainCard,.hourCard,.dayCard,.uvCard,.windCard {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        margin: 3% 0;
+    }
+
+    /* Main card internal layout */
+    .mainCard {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .cityInput {
+        grid-column: 1 / -1;
+    }
+
+    .icon {
+        grid-column: 1 / -1;
+    }
+
+    .tempCard,.precipCard,.humidCard,.visibCard {
+        grid-column: span 1;
+        grid-row: auto;
+        padding: 10%;
+    }
+
+    #icon {
+        width: 150px;
+        height: 90px;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    h3, h4 {
+        font-size: 0.9em;
+    }
+
+    .compass img {
+        width: 150%;
+        height: 150%;
+    }
+
+    #cityInput {
+        width: 100%;
+        font-size: 0.9em;
+    }
+
+    #searchBtn img {
+        width: 120%;
+    }
+}
+
