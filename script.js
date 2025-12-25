@@ -128,40 +128,7 @@ function pushdata(data){
 
 
 
-//echec pour mettre une icone interactive avec le temps
 
-    /*     if(weatherCondList.include(data.current.condition.text)){
-        const currentTimeStr = data.location.localtime;           // "2025-11-28 14:23"
-        const sunriseStr = data.forecast.forecastday[0].astro.sunrise; // "07:42 AM"
-        const sunsetStr = data.forecast.forecastday[0].astro.sunset;   // "05:12 PM"
-        console.log(sunrisestr)
-        
-        const currentDate = new Date(currentTimeStr.replace(" ","T"));
-        console.log(currentDate)
-        const dateOnly = currentTimeStr.split(" ")[0]; // "2025-11-28"
-        const sunriseDate = new Date(`${dateOnly}T${sunriseStr}`);
-        const sunsetDate = new Date(`${dateOnly}T${sunsetStr}`);
-        if(currentDate > sunriseDate && currentDate < sunsetDate){
-            //day
-            document.getElementById("icon").src = weatherConditions[data.current.condition.text][1];
-            document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
-            document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][0]})`;
-            document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
-        }
-        else{
-            //night
-            document.getElementById("icon").src = weatherConditions[data.current.condition.text][3];
-            document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][2]})`;
-            document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][2]})`;
-            document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][2]})`
-        }
-    }
-    else{
-        document.getElementById("icon").src = weatherConditions[data.current.condition.text][1];
-        document.querySelector('body').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
-        document.querySelector('main').style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${weatherConditions[data.current.condition.text][0]})`;
-        document.getElementById('mainCard').style.backgroundImage=`url(${weatherConditions[data.current.condition.text][0]})`;
-    } */
 
 }
 
